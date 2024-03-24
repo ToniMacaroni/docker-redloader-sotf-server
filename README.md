@@ -1,6 +1,6 @@
 # Redloader - Modded Sons Of The Forest dedicated server (docker)
 
-The images are tagged with the according Redloader version (starting from 0.7.0)
+The images are tagged with the corresponding Redloader version (starting from 0.7.0)
 
 Bash:
 
