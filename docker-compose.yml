@@ -2,7 +2,7 @@ version: '3.9'
 services:
   docker-redloader-sotf-server:
     container_name: docker-redloader-sotf-server
-    image: tonimacaroniy/docker-redloader-sotf-server:latest
+    image: tonimacaroniy/docker-redloader-sotf-server:0.7.0
     restart: always
     environment:
       ALWAYS_UPDATE_ON_START: 1
