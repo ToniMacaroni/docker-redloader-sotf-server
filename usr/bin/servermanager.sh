@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # SteamCMD APPID for sons-of-the-forest-dedicated-server
-GAME_PATH="/sonsoftheforest/"
+GAME_PATH="/sonsoftheforest"
 CONFIGFILE_PATH="$USERDATA_PATH/dedicatedserver.cfg"
 
 function isServerRunning() {
@@ -18,6 +18,20 @@ function isVirtualScreenRunning() {
     else
         false
     fi
+}
+
+function installRedloader() {
+    cd $GAME_PATH
+    if [ ! -d "_Redloader" ]; then
+        echo ">>> Downloading and unpacking _RedLoader version $REDLOADER_VERSION"
+        wget -qO RedLoader.zip "https://github.com/ToniMacaroni/RedLoader/releases/download/$REDLOADER_VERSION/RedLoader.zip"
+        unzip -qo RedLoader.zip
+        rm RedLoader.zip
+        echo ">>> _Redloader installed"
+    else
+        echo ">>> _Redloader already installed"
+    fi
+    cd ..
 }
 
 function setupWineInBashRc() {
@@ -71,7 +85,7 @@ function installServer() {
         cp /ownerswhitelist.txt.example $USERDATA_PATH/ownerswhitelist.txt
     fi
 
-    cp /steam_appid.txt $GAME_PATH
+    cp /steam_appid.txt $GAME_PATH/
     bash /steamcmd/steamcmd.sh +runscript /steamcmdinstall.txt
 }
 
@@ -88,18 +102,19 @@ function startServer() {
     fi
     echo ">>> Starting the gameserver"
     rm /tmp/.X1-lock 2> /dev/null
-    cd /sonsoftheforest
-    wine64 /sonsoftheforest/SonsOfTheForestDS.exe -userdatapath $USERDATA_PATH
+    cd $GAME_PATH
+    wine64 $GAME_PATH/SonsOfTheForestDS.exe -userdatapath $USERDATA_PATH
 }
 
 function startMain() {
     # Check if server is installed, if not try again
-    if [ ! -f "/sonsoftheforest/SonsOfTheForestDS.exe" ]; then
+    if [ ! -f "$GAME_PATH/SonsOfTheForestDS.exe" ]; then
         installServer
     fi
     if [ $ALWAYS_UPDATE_ON_START == 1 ]; then
         updateServer
     fi
+    installRedloader
     startServer
 }
 

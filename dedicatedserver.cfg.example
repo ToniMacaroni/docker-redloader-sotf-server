@@ -3,7 +3,7 @@
   "GamePort": 8766,
   "QueryPort": 27016,
   "BlobSyncPort": 9700,
-  "ServerName": "jammsen-docker-generated-###RANDOM###",
+  "ServerName": "RedLoader Server ###RANDOM###",
   "MaxPlayers": 8,
   "Password": "",
   "LanOnly": false,
