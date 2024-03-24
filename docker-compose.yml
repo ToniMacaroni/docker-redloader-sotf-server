@@ -1,8 +1,8 @@
 version: '3.9'
 services:
-  sons-of-the-forest-dedicated-server:
-    container_name: sons-of-the-forest-dedicated-server
-    image: jammsen/sons-of-the-forest-dedicated-server:latest
+  docker-redloader-sotf-server:
+    container_name: docker-redloader-sotf-server
+    image: tonimacaroniy/docker-redloader-sotf-server:latest
     restart: always
     environment:
       ALWAYS_UPDATE_ON_START: 1

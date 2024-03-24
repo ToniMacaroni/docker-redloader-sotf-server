@@ -1,7 +1,7 @@
 FROM jammsen/base:wine-stable-debian-bullseye
 
-LABEL org.opencontainers.image.authors="Sebastian Schmidt"
-LABEL org.opencontainers.image.source="https://github.com/jammsen/docker-sons-of-the-forest-dedicated-server"
+LABEL org.opencontainers.image.authors="Sebastian Schmidt, ToniMacaroni"
+LABEL org.opencontainers.image.source="https://github.com/ToniMacaroni/docker-redloader-sotf-server"
 
 ENV WINEPREFIX=/winedata/WINE64 \
     WINEARCH=win64 \
